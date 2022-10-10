@@ -19,11 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\ray.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\math\vector3d.cpp" />
+    <ClCompile Include="src\objects\sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\objects\hittable.hpp" />
     <ClInclude Include="src\math\vector3d.hpp" />
+    <ClInclude Include="src\ray.hpp" />
+    <ClInclude Include="src\objects\sphere.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
