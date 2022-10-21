@@ -49,6 +49,12 @@
     <ClInclude Include="src\objects\sphere.hpp">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="src\color.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\math\utils.hpp">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

@@ -2,67 +2,67 @@
 #include <cmath>
 
 Vector3d Vector3d::operator+(const Vector3d& other) const {
-    return Vector3d(m_x + other.m_x, m_y + other.m_y, m_z + other.m_z);
+    return Vector3d(x + other.x, y + other.y, z + other.z);
 }
 
 Vector3d Vector3d::operator-(const Vector3d& other) const {
-    return Vector3d(m_x - other.m_x, m_y - other.m_y, m_z - other.m_z);
+    return Vector3d(x - other.x, y - other.y, z - other.z);
 }
 
 Vector3d Vector3d::operator*(const Vector3d& other) const {
-    return Vector3d(m_x * other.m_x, m_y * other.m_y, m_z * other.m_z);
+    return Vector3d(x * other.x, y * other.y, z * other.z);
 }
 
 Vector3d Vector3d::operator/(const Vector3d& other) const {
-    return Vector3d(m_x / other.m_x, m_y / other.m_y, m_z / other.m_z);
+    return Vector3d(x / other.x, y / other.y, z / other.z);
 }
 
 Vector3d& Vector3d::operator+=(const Vector3d& other) {
-    m_x += other.m_x;
-    m_y += other.m_y;
-    m_z += other.m_z;
+    x += other.x;
+    y += other.y;
+    z += other.z;
     return *this;
 }
 
 Vector3d& Vector3d::operator-=(const Vector3d& other) {
-    m_x -= other.m_x;
-    m_y -= other.m_y;
-    m_z -= other.m_z;
+    x -= other.x;
+    y -= other.y;
+    z -= other.z;
     return *this;
 }
 
 Vector3d& Vector3d::operator*=(const Vector3d& other) {
-    m_x *= other.m_x;
-    m_y *= other.m_y;
-    m_z *= other.m_z;
+    x *= other.x;
+    y *= other.y;
+    z *= other.z;
     return *this;
 }
 
 Vector3d& Vector3d::operator/=(const Vector3d& other) {
-    m_x /= other.m_x;
-    m_y /= other.m_y;
-    m_z /= other.m_z;
+    x /= other.x;
+    y /= other.y;
+    z /= other.z;
     return *this;
 }
 
 Vector3d Vector3d::operator*(double scalar) const {
-    return Vector3d(m_x * scalar, m_y * scalar, m_z * scalar);
+    return Vector3d(x * scalar, y * scalar, z * scalar);
 }
 
 Vector3d Vector3d::operator/(double scalar) const {
-    return Vector3d(m_x / scalar, m_y / scalar, m_z / scalar);
+    return Vector3d(x / scalar, y / scalar, z / scalar);
 }
 
 Vector3d Vector3d::CrossProduct(const Vector3d& other) const {
     return Vector3d(
-        (m_y * other.m_z) - (m_z * other.m_y),
-        (m_z * other.m_x) - (m_x * other.m_z),
-        (m_x * other.m_y) - (m_y * other.m_x)
+        (y * other.z) - (z * other.y),
+        (z * other.x) - (x * other.z),
+        (x * other.y) - (y * other.x)
     );
 }
 
 double Vector3d::DotProduct(const Vector3d& other) const {
-    return m_x * other.m_x + m_y * other.m_y + m_z * other.m_z;
+    return x * other.x + y * other.y + z * other.z;
 }
 
 double Vector3d::Length() const {
@@ -70,9 +70,18 @@ double Vector3d::Length() const {
 }
 
 double Vector3d::LengthSquared() const {
-    double x2 = m_x * m_x;
-    double y2 = m_y * m_y;
-    double z2 = m_z * m_z;
+    double x2 = x * x;
+    double y2 = y * y;
+    double z2 = z * z;
 
     return x2 + y2 + z2;
+}
+
+Vector3d Vector3d::Normalized() const {
+    double lengthSquared = LengthSquared();
+    if (lengthSquared == 0)
+        return Vector3d();
+
+    double length = sqrt(lengthSquared);
+    return Vector3d(x / length, y / length, z / length);
 }

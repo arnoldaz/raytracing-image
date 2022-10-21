@@ -2,13 +2,13 @@
 
 #include "../ray.hpp"
 
-struct HitResult {
+struct IntersectionResult {
     Point3d HitPoint;
     Vector3d Normal;
     double Distance;
 };
 
-class Hittable {
+class IntersectableObject {
 public:
-    virtual bool Hit(const Ray& ray, double minDistance, double maxDistance, HitResult& result) const = 0;
+    virtual bool Intersect(const Ray& ray, IntersectionResult& result) const = 0;
 };
